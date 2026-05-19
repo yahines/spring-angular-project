@@ -1,3 +1,17 @@
-.testcolor {
-   color: red
+.toolbar-primary {
+  background-color: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+  --mat-toolbar-container-text-color: var(--mat-sys-on-primary);
 }
+
+
+mat-drawer {
+  width: 200px;
+  background-color: primary;
+}
+
+mat-drawer mat-icon {
+  color: dark;
+}
+mat-drawer-content{
+background-color: white}
