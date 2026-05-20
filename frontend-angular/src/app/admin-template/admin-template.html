@@ -1,6 +1,6 @@
 <div style="display: flex; flex-direction: column; height: 100vh;">
 <mat-toolbar class="toolbar-primary">
-  <button mat-icon-button (click)="myDrawer.toggle()">
+  <button mat-icon-button (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
   <span style="flex: auto"></span>
@@ -18,7 +18,7 @@
 </mat-toolbar>
 
 <mat-drawer-container style="flex:1;">
-  <mat-drawer #myDrawer opened="true" mode="side" position="start">
+  <mat-drawer #drawer opened="true" mode="side" position="start">
     <mat-nav-list>
       <mat-list-item>
         <button mat-button routerLink="/dashboard">
