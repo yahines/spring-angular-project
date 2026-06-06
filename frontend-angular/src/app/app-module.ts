@@ -15,6 +15,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
@@ -30,6 +36,9 @@ import { Dashboard } from './dashboard/dashboard';
 import { AuthGuard } from './guards/auth-guard';
 import { AuthorizationGuard } from './guards/authorization-guard';
 import { provideHttpClient } from '@angular/common/http';
+import { StudentDetails } from './student-details/student-details';
+import { NewPayment } from './new-payment/new-payment';
+import { PaymentDetails } from './payment-details/payment-details';
 
 @NgModule({
   declarations: [
@@ -43,6 +52,9 @@ import { provideHttpClient } from '@angular/common/http';
     Students,
     Payments,
     Dashboard,
+    StudentDetails,
+    NewPayment,
+    PaymentDetails,
   ],
   imports: [
     BrowserModule,
@@ -60,14 +72,22 @@ import { provideHttpClient } from '@angular/common/http';
     ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatOptionModule,
+    PdfViewerModule,
+    MatProgressSpinnerModule,
   ],
-  providers: [provideBrowserGlobalErrorListeners(),
-  //            provideAnimationsAsync(),
-              AuthGuard,
-              AuthorizationGuard,
-              provideHttpClient(),  // ← nécessaire pour HttpClient
-              ],
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+//  provideAnimationsAsync(),
+    AuthGuard,
+    AuthorizationGuard,
+//  nécessaire pour HttpClient
+    provideHttpClient(),
+  ],
   bootstrap: [App],
 })
 export class AppModule {}

@@ -1,5 +1,6 @@
 package nesrine_dev.backendspring.web;
 
+import nesrine_dev.backendspring.dtos.NewPaymentDTO;
 import nesrine_dev.backendspring.entities.Payment;
 import nesrine_dev.backendspring.entities.PaymentStatus;
 import nesrine_dev.backendspring.entities.PaymentType;
@@ -99,11 +100,8 @@ public class StudentRestController {
 
     @PostMapping(value="/payments", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public Payment savePayment(@RequestParam MultipartFile file,
-                               LocalDate date,
-                               double amount,
-                               PaymentType type,
-                               String studentCode) throws IOException {
+                               NewPaymentDTO newPaymentDTO) throws IOException {
 
-        return paymentService.savePayment(file, date, amount, type, studentCode);
+        return paymentService.savePayment(file, newPaymentDTO);
     }
 }

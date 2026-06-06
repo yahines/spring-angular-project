@@ -1,5 +1,6 @@
 package nesrine_dev.backendspring.service;
 
+import nesrine_dev.backendspring.dtos.NewPaymentDTO;
 import nesrine_dev.backendspring.entities.Payment;
 import nesrine_dev.backendspring.entities.PaymentStatus;
 import nesrine_dev.backendspring.entities.PaymentType;
@@ -31,10 +32,7 @@ public class PaymentService {
     }
 
     public Payment savePayment(MultipartFile file,
-                               LocalDate date,
-                               double amount,
-                               PaymentType type,
-                               String studentCode) throws IOException {
+                               NewPaymentDTO newPaymentDTO) throws IOException {
         Path path = Paths.get(System.getProperty("user.home"),"students-app-files","payments");
         if (!Files.exists(path)) {
             Files.createDirectories(path);
@@ -43,9 +41,10 @@ public class PaymentService {
         Path filePath = Paths.get(System.getProperty("user.home"),"students-app-files","payments",fileId+".pdf");
         Files.copy(file.getInputStream(), filePath);
 
-        Student student = studentRepository.findByCode(studentCode);
-        Payment payment = Payment.builder().type(type)
-                .amount(amount)
+        Student student = studentRepository.findByCode(newPaymentDTO.getStudentCode());
+        Payment payment = Payment.builder().type(newPaymentDTO.getType())
+                .amount(newPaymentDTO.getAmount())
+                .date(newPaymentDTO.getDate())
                 .student(student)
                 .status(PaymentStatus.CREATED)
                 .file(filePath.toUri().toString())
